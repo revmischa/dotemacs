@@ -2,7 +2,15 @@
 (global-set-key "\C-cd" 'dash-at-point)
 ; M-. = elpy go to definition
 (define-key elpy-mode-map (kbd "M-.") 'goto-def-or-rgrep)
+; M-, = rgrep
+(define-key elpy-mode-map (kbd "M-,") 'elpy-rgrep-symbol)
+; M-S-, = project-find-regexp
+(define-key elpy-mode-map (kbd "C-,") 'project-find-regexp)
 
+; ctl-` = jump back to last term or make a new one
+(global-set-key (kbd "C-`") 'get-term)
+; M-` = toggle dedicated term
+(global-set-key (kbd "M-`") 'multi-term-dedicated-toggle)
 ; f1 = new terminal
 (global-set-key [f1] 'multi-term)
 ; M-e, M-r = cycle between terminals
@@ -12,7 +20,7 @@
 (global-set-key "\C-q" 'bubble-buffer-next)
 (global-set-key "\M-q" 'bubble-buffer-previous)
 (add-hook 'term-mode-hook (lambda ()
-                            (define-key term-raw-map (kbd "C-y") 'term-paste)))
+  (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ; ctl-t = pytest current module
 (global-set-key "\C-t" 'pytest-module)
